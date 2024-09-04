@@ -1,0 +1,146 @@
+Microsserviço core:
+
+app/domain/schemas:
+
+user.py: Schemas para User (criação, atualização, resposta).
+auth.py: Schemas para autenticação (login, token, etc.).
+(Outros schemas conforme necessário para funcionalidades transversais)
+app/domain/models:
+
+user.py: Modelo de domínio para User (pode usar ORM ou dataclass).
+app/domain/repositories:
+
+user_repository.py: Repositório para operações CRUD de User.
+app/domain/use_cases:
+
+user_use_cases.py: Use cases para gerenciar usuários (criar, atualizar, listar, etc.).
+auth_use_cases.py: Use cases para autenticação (login, geração de token, etc.).
+app/domain/validations:
+
+user_validations.py: Validações para os dados de User.
+app/resources/routers:
+
+user_router.py: Rotas da API para gerenciar usuários.
+auth_router.py: Rotas da API para autenticação.
+app/infrastructure/adapters/database:
+
+user_adapter.py: Adaptador para operações CRUD de User no banco de dados (pode ser Neo4j ou outro, dependendo da sua escolha para o core).
+app/infrastructure/drivers:
+
+database_driver.py: Driver para o banco de dados escolhido para o core.
+app/services:
+
+(Outros serviços conforme necessário para funcionalidades transversais)
+Microsserviço demandas:
+
+app/domain/schemas:
+
+demanda.py: Schemas para Demanda (criação, atualização, resposta).
+app/domain/models:
+
+demanda.py: Modelo de domínio para Demanda.
+app/domain/repositories:
+
+demanda_repository.py: Repositório para operações CRUD de Demanda no Neo4j.
+app/domain/use_cases:
+
+demanda_use_cases.py: Use cases para gerenciar demandas (criar, atualizar, listar, etc.).
+demanda_analysis_use_cases.py: Use cases para análise de demandas (classificação, agrupamento, etc.), utilizando os serviços de NLP e Graph ML.
+app/domain/validations:
+
+demanda_validations.py: Validações para os dados de Demanda.
+app/resources/routers:
+
+demanda_router.py: Rotas da API para gerenciar demandas.
+app/infrastructure/adapters/database:
+
+demanda_adapter.py: Adaptador para operações CRUD de Demanda no Neo4j.
+app/infrastructure/drivers:
+
+neo4j_driver.py: Driver para o Neo4j.
+app/services:
+
+nlp_service.py: Serviço para processamento de linguagem natural, utilizando spaCy.
+graph_ml_service.py: Serviço para Graph Machine Learning, utilizando PyTorch e PyTorch Geometric.
+Microsserviço agenda_estrategica:
+
+app/domain/schemas:
+
+objetivo_estrategico.py: Schemas para Objetivo Estratégico.
+meta.py: Schemas para Meta.
+indicador.py: Schemas para Indicador.
+iniciativa.py: Schemas para Iniciativa (opcional).
+risco.py: Schemas para Risco (opcional).
+app/domain/models:
+
+objetivo_estrategico.py: Modelo de domínio para Objetivo Estratégico.
+meta.py: Modelo de domínio para Meta.
+indicador.py: Modelo de domínio para Indicador.
+iniciativa.py: Modelo de domínio para Iniciativa (opcional).
+risco.py: Modelo de domínio para Risco (opcional).
+app/domain/repositories:
+
+objetivo_estrategico_repository.py: Repositório para operações CRUD de Objetivo Estratégico no Neo4j.
+meta_repository.py: Repositório para operações CRUD de Meta no Neo4j.
+indicador_repository.py: Repositório para operações CRUD de Indicador no Neo4j.
+iniciativa_repository.py: Repositório para operações CRUD de Iniciativa no Neo4j (opcional).
+risco_repository.py: Repositório para operações CRUD de Risco no Neo4j (opcional).
+app/domain/use_cases:
+
+objetivo_estrategico_use_cases.py: Use cases para gerenciar objetivos estratégicos.
+meta_use_cases.py: Use cases para gerenciar metas.
+indicador_use_cases.py: Use cases para gerenciar indicadores.
+iniciativa_use_cases.py: Use cases para gerenciar iniciativas (opcional).
+risco_use_cases.py: Use cases para gerenciar riscos (opcional).
+agenda_estrategica_analysis_use_cases.py: Use cases para análise da agenda estratégica (monitoramento, análise de riscos, recomendação de ações), utilizando os serviços de NLP e Graph ML.
+app/domain/validations:
+
+objetivo_estrategico_validations.py: Validações para os dados de Objetivo Estratégico.
+meta_validations.py: Validações para os dados de Meta.
+indicador_validations.py: Validações para os dados de Indicador.
+iniciativa_validations.py: Validações para os dados de Iniciativa (opcional).
+risco_validations.py: Validações para os dados de Risco (opcional).
+app/resources/routers:
+
+objetivo_estrategico_router.py: Rotas da API para gerenciar objetivos estratégicos.
+meta_router.py: Rotas da API para gerenciar metas.
+indicador_router.py: Rotas da API para gerenciar indicadores.
+iniciativa_router.py: Rotas da API para gerenciar iniciativas (opcional).
+risco_router.py: Rotas da API para gerenciar riscos (opcional).
+app/infrastructure/adapters/database:
+
+objetivo_estrategico_adapter.py: Adaptador para operações CRUD de Objetivo Estratégico no Neo4j.
+meta_adapter.py: Adaptador para operações CRUD de Meta no Neo4j.
+indicador_adapter.py: Adaptador para operações CRUD de Indicador no Neo4j.
+iniciativa_adapter.py: Adaptador para operações CRUD de Iniciativa no Neo4j (opcional).
+risco_adapter.py: Adaptador para operações CRUD de Risco no Neo4j (opcional).
+app/infrastructure/drivers:
+
+neo4j_driver.py: Driver para o Neo4j.
+app/services:
+
+nlp_service.py: Serviço para processamento de linguagem natural, utilizando spaCy.
+graph_ml_service.py: Serviço para Graph Machine Learning, utilizando PyTorch e PyTorch Geometric.
+Frontend (React):
+
+src/components:
+
+FormularioDemanda.js
+FormularioObjetivoEstrategico.js
+FormularioMeta.js
+FormularioIndicador.js
+FormularioIniciativa.js (opcional)
+FormularioRisco.js (opcional)
+(Outros componentes conforme necessário)
+src/pages:
+
+GerenciarDemandas.js
+DetalharAgendaEstrategica.js
+(Outras páginas conforme necessário)
+Observações:
+
+Implementação dos modelos: Utilize dataclasses ou um ORM (se necessário) para os modelos de domínio.
+Configuração do Neo4j: Configure o driver Neo4j em app/infrastructure/drivers/neo4j_driver.py de cada microsserviço que o utiliza.
+NLP e Graph ML: Implemente as funções de NLP e os modelos de Graph ML em app/helpers e utilize-os nos serviços nlp_service e graph_ml_service.
+Testes e documentação: Escreva testes unitários e de integração para seus microsserviços e mantenha a documentação da API atualizada.
+Outras funcionalidades: Implemente outras funcionalidades conforme necessário, como autenticação, autorização, logging, monitoramento, etc., seguindo a estrutura do boilerplate.

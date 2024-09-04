@@ -9,5 +9,5 @@ load_dotenv()
 # app routes
 app.include_router(life_check_api, prefix="/health", tags=["health"])
 
-schema = Schema(app=app, title="Microservices template")
+schema = Schema(app=app, title="Microservices on GML analysis")
 app.openapi = schema.create
